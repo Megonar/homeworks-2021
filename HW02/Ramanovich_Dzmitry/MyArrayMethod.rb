@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
-module MyMethod
+module MyArrayMethod
   refine Array do
+    
     def my_map
       my_arr = Array.new
       for i in 0...size
