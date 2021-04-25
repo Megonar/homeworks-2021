@@ -1,4 +1,4 @@
-require_relative 'MyArrayMethod.rb'
+require_relative 'my_array_method.rb'
 
 using MyArrayMethod
 
