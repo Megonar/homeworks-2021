@@ -2,7 +2,7 @@
 
 def quantity(str)
   str.strip.downcase
-  hash = Hash.new
+  hash = {}
 
   hash[:letters] = str.count('a-z')
   hash[:digits] = str.count('0-9')
