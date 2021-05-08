@@ -11,7 +11,5 @@ def task_3(logs)
 end
 
 def method(str)
-  arr = []
-  str.each_cons(2) { |str_one, str_two| arr << Time.parse(str_two) - Time.parse(str_one) }
-  arr.join(',')
+  str.each_cons(2).map { |str_one, str_two| Time.parse(str_two) - Time.parse(str_one) }.join(',')
 end
