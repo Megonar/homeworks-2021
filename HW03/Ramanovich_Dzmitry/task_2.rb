@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-DATA = /(?<=\[)[^]]+(?=\])/.freeze
-FROM = /^[0-9]+\.+[0-9]+\.+[0-9]+\.+[0-9]*/.freeze
+DATA = /\[.*\]/.freeze
+FROM = /\d+\.+\d+\.+\d+\.+\d*/.freeze
 TO = /POST (.*) HTTP/.freeze
 
 def task2(example)
@@ -18,3 +18,6 @@ def task2(example)
   end
   array
 end
+
+
+#/(?<=\[)[^]]+(?=\])/
