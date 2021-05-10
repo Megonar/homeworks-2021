@@ -54,4 +54,4 @@ puts '=========================='
 
 puts 'Test task_4'
 
-quantity('1234qweq!')
+p quantity('1234qweq!')
