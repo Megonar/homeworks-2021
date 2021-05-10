@@ -2,5 +2,5 @@
 
 def task_1(data)
   str = data.split("\n")
-  str.map { |s| s.downcase.include?('error') ? s : '' }.join('')
+  str.map { |line| line.downcase.include?('error') ? line : '' }.join('')
 end
