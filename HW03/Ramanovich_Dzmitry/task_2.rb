@@ -18,6 +18,3 @@ def task2(example)
   end
   array
 end
-
-
-#/(?<=\[)[^]]+(?=\])/
