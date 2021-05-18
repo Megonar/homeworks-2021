@@ -19,12 +19,12 @@ RSpec.describe MyArrayMethod do
         expect(array.my_map(&:even?).count).to eq(array.count)
       end
       it 'origin array does not change' do
-        expect(array.my_each { |a| a * 2 }).to eql([1, 2, 3, 4, 5])
+        expect(array.my_each { |x| x * 2 }).to eq([1, 2, 3, 4, 5])
       end
     end
     context 'when array digits multiplication' do
       it 'returns new array with multiplication' do
-        expect(array.my_map { |a| a * 2 }).to eq([2, 4, 6, 8, 10])
+        expect(array.my_map { |x| x * 2 }).to eq([2, 4, 6, 8, 10])
       end
     end
   end
