@@ -10,9 +10,12 @@ class Mentor
   attr_reader :students
   attr_accessor :notifications
 
-  def add_homework(title:, description:, student:)
-    homework = Homework.new(title: title, description: description, student: student, mentor: self)
-    student.homeworks += homework
+  def add_homework(title:, description:, students:)
+    homework = Homework.new(title: title, description: description, assigned_students: students, mentor: self)
+    students.each do |student|
+       student.homeworks += homework
+       send_notification_to_student(student)
+    end
   end
 
   def subscribe_to!(student)
@@ -23,19 +26,24 @@ class Mentor
     notifications.each(&:mark_as_read!)
   end
 
-  def reject_to_work!(homework)
-    notification = Notification.new(receiver: homework.student, message: 'Homework rejected to work!',
+  def reject_to_work!(homework, student)
+    notification = Notification.new(receiver: student, message: 'Homework rejected to work!',
                                     subject: homework)
-    homework.student.notifications += notification
+    student.notifications += notification
   end
 
-  def accept!(homework)
-    notification = Notification.new(receiver: homework.student, message: 'Homework accepted!')
-    homework.student.notifications += notification
+  def accept!(homework, student)
+    notification = Notification.new(receiver: student, message: 'Homework accepted!')
+    student.notifications += notification
   end
 
   def homeworks_to_check
-    notifications_about_homeworks_to_check = notifications.select { |notification| notification.type == :to_check }
+    homeworks_to_check_notification = notifications.select { |notification| notification.type == :to_check }
     notifications_about_homeworks_to_check.map(&:subject)
+  end
+  def send_notification_to_student(student)
+        notification = Notification.new(receiver: student, message: 'New homework!')
+        student.notifications += notification
+    end
   end
 end
