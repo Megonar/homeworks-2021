@@ -29,4 +29,9 @@ RSpec.describe 'Test task_4' do
       expect(quantity('123zxc///')).to eq({ digits: 3, letters: 3 })
     end
   end
+  context 'when in input empty line' do
+    it 'output 0 letters and 0 digits' do
+      expect(quantity('')).to eq({ digits: 0, letters: 0 })
+    end
+  end
 end
