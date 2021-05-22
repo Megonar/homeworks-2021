@@ -8,7 +8,7 @@ RSpec.describe MyArrayMethod do
   let(:array_empty) { [] }
   let(:array) { [1, 2, 3, 4, 5] }
 
-  describe '.my_map' do
+  describe '#my_map' do
     context 'when array is empty' do
       it 'array is empty' do
         expect(array_empty.my_map(&:even?)).to be_empty
@@ -25,6 +25,40 @@ RSpec.describe MyArrayMethod do
     context 'when array digits multiplication' do
       it 'returns new array with multiplication' do
         expect(array.my_map { |x| x * 2 }).to eq([2, 4, 6, 8, 10])
+      end
+    end
+  end
+
+  describe '#my_each' do
+    context 'when array is empty' do
+      it 'return eampty array' do
+        expect(array_empty.my_each { |x| x + 1 }).to eq([])
+      end
+    end
+
+    context 'when array is no empty' do
+      it 'origin array does not change' do
+        expect(array.my_each { |x| x + 1 }).to eq([1, 2, 3, 4, 5])
+      end
+    end
+
+    context 'when array digits multiplication' do
+      it 'returns main array' do
+        expect(array.my_each { |x| x + 2 }).to eq([1, 2, 3, 4, 5])
+      end
+    end
+  end
+
+  describe '#my_select' do
+    context 'when array is empty' do
+      it 'return eampty array' do
+        expect(array_empty.my_select { |x| x > 1 }).to eq([])
+      end
+    end
+
+    context 'when an array in input block' do
+      it 'Returns a new array containing all elements of ary for which the given block returns a true value' do
+        expect(array.my_select { |x| x > 2 }).to eq([3, 4, 5])
       end
     end
   end
