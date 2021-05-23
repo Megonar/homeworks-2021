@@ -32,22 +32,23 @@ RSpec.describe 'Test task_3.rb' do
       2018-04-23 17:19:48.6 ubuntu-xenial[14319] Debug - Calling core with action: event
     LOGS
   end
-
-  context 'when in log two right event' do
-    it 'return duration of the action in SECONDS between events that occurred' do
-      expect(task_3(log)).to eq(['49.1'])
+  describe '#task_3' do
+    context 'when in log two right event' do
+      it 'return duration of the action in SECONDS between events that occurred' do
+        expect(task_3(log)).to eq(['49.1'])
+      end
     end
-  end
 
-  context 'when zero events' do
-    it 'return 0' do
-      expect(task_3('')).to eq('0')
+    context 'when zero events' do
+      it 'return 0' do
+        expect(task_3('')).to eq('0')
+      end
     end
-  end
 
-  context 'when much events' do
-    it 'return quantity seconds' do
-      expect(task_3(log_much_events)).to eq(['49.1,21.0,22.6,26.2'])
+    context 'when much events' do
+      it 'return quantity seconds' do
+        expect(task_3(log_much_events)).to eq(['49.1,21.0,22.6,26.2'])
+      end
     end
   end
 end
