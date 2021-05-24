@@ -21,7 +21,7 @@ class Student
       notification = Notification.new(receiver: homework.mentor, message: 'New homework in progress!')
       homework.mentor.notifications += notification
     else
-      puts 'To receive notifications from this student, please subscribe!'
+      notifications_about_subscribe
     end
   end
 
@@ -35,12 +35,17 @@ class Student
                                       subject: homework)
       homework.mentor.notifications += notification
     else
-      puts 'To receive notifications from this student, please subscribe!'
-    end
+      notifications_about_subscribe
   end
 
   def rejected_homeworks
     reject_notifications = notifications.select { |notification| notification.type == :rejected_to_work }
     reject_notifications.map(&:subject)
+  end
+
+  private
+
+  def notifications_about_subscribe
+    puts 'To receive notifications from this student, please subscribe!' 
   end
 end
