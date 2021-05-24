@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module App
   def self.run
     student = Student.new(name: 'John', surname: 'Doe')

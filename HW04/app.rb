@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Your application should describe the interaction between students and mentors.
 # See example of how it should look like.
 # When you implement the classes structure, create an app.rb file
