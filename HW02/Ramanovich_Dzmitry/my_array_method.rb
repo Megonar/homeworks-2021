@@ -4,14 +4,14 @@ module MyArrayMethod
   refine Array do
     def my_map
       my_arr = []
-      (0...size).each do |i|
+      for i in 0...size
         my_arr << yield(self[i])
       end
       my_arr
     end
 
     def my_each
-      (0...size).each do |i|
+      for i in 0...size
         yield(self[i])
       end
       self
@@ -19,7 +19,7 @@ module MyArrayMethod
 
     def my_select
       arr = []
-      (0...size).each do |i|
+      for i in 0...size
         arr << self[i] if yield(self[i])
       end
       arr
