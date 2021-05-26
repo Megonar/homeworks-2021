@@ -7,7 +7,8 @@ using MyArrayMethod
 RSpec.describe 'MyArrayMethod' do
   describe '#my_map' do
     context 'when array is empty' do
-      let(:array_empty) { [] }
+      let(:empty_array) { [] }
+      
       it 'array is empty' do
         expect(array_empty.my_map(&:even?)).to be_empty
       end
