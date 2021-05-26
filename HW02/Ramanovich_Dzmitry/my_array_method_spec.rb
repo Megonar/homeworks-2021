@@ -7,7 +7,8 @@ using MyArrayMethod
 RSpec.describe 'MyArrayMethod' do
   describe '#my_map' do
     context 'when array is empty' do
-      let(:array_empty) { [] }
+      let(:empty_array) { [] }
+      
       it 'array is empty' do
         expect(array_empty.my_map(&:even?)).to be_empty
       end
@@ -19,7 +20,7 @@ RSpec.describe 'MyArrayMethod' do
         expect(array.my_map(&:even?).count).to eq(array.count)
       end
 
-      it 'origin array does not change' do
+      it 'does not modify the original array' do
         expect(array.my_each { |x| x * 2 }).to eq([1, 2, 3])
       end
     end

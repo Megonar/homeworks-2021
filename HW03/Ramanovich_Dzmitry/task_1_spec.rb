@@ -55,7 +55,7 @@ RSpec.describe 'Test task_1.rb' do
   end
 
   context 'when no arguments is given' do
-    it 'return Error' do
+    it 'returns Error' do
       expect { task_1 }.to raise_error(ArgumentError)
     end
   end
