@@ -19,7 +19,7 @@ RSpec.describe 'MyArrayMethod' do
         expect(array.my_map(&:even?).count).to eq(array.count)
       end
 
-      it 'origin array does not change' do
+      it 'does not modify the original array' do
         expect(array.my_each { |x| x * 2 }).to eq([1, 2, 3])
       end
     end
