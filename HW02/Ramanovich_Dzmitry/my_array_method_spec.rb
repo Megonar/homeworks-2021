@@ -8,9 +8,9 @@ RSpec.describe 'MyArrayMethod' do
   describe '#my_map' do
     context 'when array is empty' do
       let(:empty_array) { [] }
-      
-      it 'array is empty' do
-        expect(array_empty.my_map(&:even?)).to be_empty
+
+      it 'returns an empty array' do
+        expect(empty_array.my_map(&:even?)).to be_empty
       end
     end
 
@@ -36,10 +36,10 @@ RSpec.describe 'MyArrayMethod' do
 
   describe '#my_each' do
     context 'when array is empty' do
-      let(:array_empty) { [] }
+      let(:empty_array) { [] }
 
-      it 'return eampty array' do
-        expect(array_empty.my_each { |x| x + 1 }).to eq([])
+      it 'returns eampty array' do
+        expect(empty_array.my_each { |x| x + 1 }).to eq([])
       end
     end
 
@@ -62,17 +62,17 @@ RSpec.describe 'MyArrayMethod' do
 
   describe '#my_select' do
     context 'when array is empty' do
-      let(:array_empty) { [] }
+      let(:empty_array) { [] }
 
-      it 'return eampty array' do
-        expect(array_empty.my_select { |x| x > 1 }).to eq([])
+      it 'returns eampty array' do
+        expect(empty_array.my_select { |x| x > 1 }).to eq([])
       end
     end
 
-    context 'when an array in input block' do
+    context 'when array has block' do
       let(:array) { [1, 2, 3, 4, 5] }
 
-      it 'Returns a new array containing all elements of ary for which the given block returns a true value' do
+      it 'returns a new array containing all elements of ary for which the given block returns a true value' do
         expect(array.my_select { |x| x > 2 }).to eq([3, 4, 5])
       end
     end
