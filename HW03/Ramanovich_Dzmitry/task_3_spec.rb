@@ -5,7 +5,7 @@ require_relative 'task_3'
 
 RSpec.describe 'Test task_3.rb' do
   describe '#task_3' do
-    context 'when in log two right event' do
+    context 'when log has two right event' do
       let(:log) do
         <<~LOGS
           2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action: event
@@ -18,19 +18,19 @@ RSpec.describe 'Test task_3.rb' do
         LOGS
       end
 
-      it 'return duration of the action in SECONDS between events that occurred' do
+      it 'returns duration of the action in SECONDS between events that occurred' do
         expect(task_3(log)).to eq(['49.1'])
       end
     end
 
-    context 'when zero events' do
-      it 'return 0' do
+    context 'when log has zero events' do
+      it 'returns 0' do
         expect(task_3('')).to eq('0')
       end
     end
 
-    context 'when much events' do
-      let(:log_much_events) do
+    context 'when log has more then two events' do
+      let(:log) do
         <<~LOGS
           2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action: event
           2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
@@ -47,8 +47,8 @@ RSpec.describe 'Test task_3.rb' do
         LOGS
       end
 
-      it 'return quantity seconds' do
-        expect(task_3(log_much_events)).to eq(['49.1,21.0,22.6,26.2'])
+      it 'returns quantity seconds' do
+        expect(task_3(log)).to eq(['49.1,21.0,22.6,26.2'])
       end
     end
   end

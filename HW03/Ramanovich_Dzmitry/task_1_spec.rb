@@ -4,7 +4,7 @@ require 'rspec'
 require_relative 'task_1'
 
 RSpec.describe 'Test task_1.rb' do
-  context 'when logs have errors' do
+  context 'when logs has errors' do
     let(:logs) do
       <<~LOG
         10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0498
@@ -14,15 +14,15 @@ RSpec.describe 'Test task_1.rb' do
       LOG
     end
 
-    let(:string_with_errors) do
+    let(:expected_results) do
       '2018-04-23 20:30:42: SSL error, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSLError: System error: Undefined error: 0 - 0>'
     end
-    it 'return full text first line with an error' do
-      expect(task_1(logs)).to eq(string_with_errors)
+    it 'returns full text first line with an error' do
+      expect(task_1(logs)).to eq(expected_results)
     end
   end
 
-  context 'when logs have no line with errors' do
+  context 'when logs has no line with errors' do
     let(:log) do
       <<~LOG
         10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0498
@@ -30,12 +30,12 @@ RSpec.describe 'Test task_1.rb' do
         10.6.246.101 - - [23/Apr/2018:20:29:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0290
       LOG
     end
-    it 'return empty line' do
+    it 'returns an empty line' do
       expect(task_1(log)).to eq('')
     end
   end
 
-  context 'when logs have many errors' do
+  context 'when logs has many errors' do
     let(:logs_with_errors) do
       <<~LOG
         10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0498
@@ -46,11 +46,11 @@ RSpec.describe 'Test task_1.rb' do
       LOG
     end
 
-    let(:string_with_errors) do
+    let(:expected_results) do
       '2018-04-23 20:30:42: SSL error, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSLError: System error: Undefined error: 0 - 0>'
     end
-    it 'return first line with errors' do
-      expect(task_1(logs_with_errors)).to eq(string_with_errors)
+    it 'returns first line with errors' do
+      expect(task_1(logs_with_errors)).to eq(expected_results)
     end
   end
 
@@ -59,13 +59,13 @@ RSpec.describe 'Test task_1.rb' do
       expect { task_1 }.to raise_error(ArgumentError)
     end
   end
-  context 'when logs do not get the text' do
-    it 'return empty line' do
+  context 'when logs does not get the text' do
+    it 'returns empty line' do
       expect(task_1('')).to eq('')
     end
   end
-  context 'when logs get random text' do
-    it 'return Error' do
+  context 'when logs gets a random text' do
+    it 'returns Error' do
       expect { task_1 }.to raise_error(ArgumentError)
     end
   end
