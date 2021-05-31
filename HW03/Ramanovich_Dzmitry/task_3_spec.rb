@@ -25,7 +25,7 @@ RSpec.describe 'Test task_3.rb' do
 
     context 'when log has zero events' do
       it 'returns 0' do
-        expect(task_3('')).to eq('0')
+        expect(task_3('')).to eq(['0'])
       end
     end
 
